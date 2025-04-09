@@ -25,6 +25,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
+
   nginx:
     image: nginx:latest
     volumes:
@@ -33,7 +34,6 @@ services:
       - "80:80"
     depends_on:
       - wordpress
-
 volumes:
   wordpress_data:
   db_data:
