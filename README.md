@@ -1,1 +1,1 @@
-# High Availability WordPress on GCP
+# High-Availability-Containerized-Application-Deployment-Project
