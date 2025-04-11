@@ -1,14 +1,10 @@
-# Ignore logs, temporary files, and OS metadata.
-*.log
-*.tmp
-.DS_Store
-
-# Ignore local Python caches
+# Python caches and temporary files
 __pycache__/
+*.pyc
 
-# Ignore Docker node_modules if you add any, and data folders.
-docker/app/node_modules/
-docker/db/data/
-
-# Do not commit environment variable files.
+# Environment files
 .env
+
+# Docker Compose override file (if you ever add it)
+docker-compose.override.yml
+

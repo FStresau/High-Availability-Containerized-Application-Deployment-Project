@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    build: 
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    restart: always  # Ensure it restarts if it crashes
+
+  db:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: flaskuser
+      POSTGRES_PASSWORD: flaskpass
+      POSTGRES_DB: flaskdb
+    volumes:
+      - db_data:/var/lib/postgresql/data  # This line ensures persistent storage
+    ports:
+      - "5432:5432"
+    restart: always  # Ensure it restarts if it crashes
+
+volumes:
+  db_data:  # Declare the volume here
+
