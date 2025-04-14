@@ -7,24 +7,43 @@ services:
       replicas: 3
       restart_policy:
         condition: on-failure
+    secrets:
+      - db_user
+      - db_password
+      - db_name
     environment:
       - POSTGRES_HOST=db
-      - POSTGRES_USER=flaskuser
-      - POSTGRES_PASSWORD=flaskpass
-      - POSTGRES_DB=flaskdb
-    ports:
-      - "80:8080"
+      - POSTGRES_USER_FILE=/run/secrets/db_user
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
+      - POSTGRES_DB_FILE=/run/secrets/db_name
     networks:
       - backend
 
   db:
     image: postgres:14-alpine
+    secrets:
+      - db_user
+      - db_password
+      - db_name
     environment:
-      - POSTGRES_DB=flaskdb
-      - POSTGRES_USER=flaskuser
-      - POSTGRES_PASSWORD=flaskpass
+      - POSTGRES_DB_FILE=/run/secrets/db_name
+      - POSTGRES_USER_FILE=/run/secrets/db_user
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
     volumes:
       - db_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  nginx:
+    image: fstresau/sebs-nginx-image:latest
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
     networks:
       - backend
 
@@ -34,4 +53,12 @@ networks:
 
 volumes:
   db_data:
+
+secrets:
+  db_user:
+    external: true
+  db_password:
+    external: true
+  db_name:
+    external: true
 
