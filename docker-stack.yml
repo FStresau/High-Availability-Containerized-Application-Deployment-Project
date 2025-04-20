@@ -49,10 +49,15 @@ services:
 
 networks:
   backend:
-    driver: overlay
+    external: true
 
 volumes:
   db_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/db_data
+      o: bind
 
 secrets:
   db_user:
@@ -61,4 +66,3 @@ secrets:
     external: true
   db_name:
     external: true
-
