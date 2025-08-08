@@ -21,9 +21,7 @@ Secure Secrets Management – Docker secrets used for database credentials.
 Cloud Deployment – Hosted on GCP Compute Engine with external access.
 
 🛠️ Architecture
-pgsql
-Copy
-Edit
+
 Client
    │
    ▼
@@ -63,26 +61,14 @@ Real-World Testing – Simulated failures and ApacheBench load testing to measur
 
 🚀 Deployment Instructions
 1. Clone the Repository
-bash
-Copy
-Edit
 git clone https://github.com/YOUR_USERNAME/High-Availability-Containerized-Application-Deployment-Project.git
 cd High-Availability-Containerized-Application-Deployment-Project
 2. Configure Secrets
-bash
-Copy
-Edit
 echo "your_db_password" | docker secret create postgres_password -
 3. Deploy the Stack
-bash
-Copy
-Edit
 docker swarm init
 docker stack deploy -c docker-stack.yml ha_app
 4. Enable Auto Scaling
-bash
-Copy
-Edit
 chmod +x autoscale.sh
 sudo systemctl enable autoscale.service
 sudo systemctl start autoscale.service
