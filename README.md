@@ -72,6 +72,7 @@ docker stack deploy -c docker-stack.yml ha_app
 chmod +x autoscale.sh
 sudo systemctl enable autoscale.service
 sudo systemctl start autoscale.service
+```
 
 📊 Testing & Results
 Uptime: 100% during simulated container failures.
