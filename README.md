@@ -75,27 +75,22 @@ sudo systemctl start autoscale.service
 ```
 
 📊 Testing & Results
-Uptime: 100% during simulated container failures.
-
-Scalability: Automatically scaled from 3 to 6 replicas during load tests.
-
-Performance: Majority of HTTP requests completed under 2 seconds in ApacheBench stress test.
-
-Data Integrity: PostgreSQL persistent volumes retained full dataset across restarts.
+- Uptime: 100% during simulated container failures.
+- Scalability: Automatically scaled from 3 to 6 replicas during load tests.
+- Performance: The Majority of HTTP requests completed under 2 seconds in an ApacheBench stress test.
+- Data Integrity: PostgreSQL persistent volumes retained the full dataset across restarts.
 
 👥 Team
-Name	Role
-Frederic Stresau	Project Lead
-Quy Pham	Application Deployment Lead
-Jackson Harper	Data Management Lead
-Simon Chummar	Infrastructure & Automation Lead
+Name                      Role
+Frederic Stresau	        Project Lead
+Quy Pham	                Application Deployment Lead
+Jackson Harper	          Data Management Lead
+Simon Chummar	            Infrastructure & Automation Lead
 
 📈 Future Improvements
-Containerize the auto-scaling script for easier integration.
-
-Add user authentication to the web application.
-
-Implement analytics dashboard for usage monitoring.
+- Containerize the auto-scaling script for easier integration.
+- Add user authentication to the web application.
+- Implement an analytics dashboard for usage monitoring.
 
 
 
